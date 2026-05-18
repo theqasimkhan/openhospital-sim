@@ -4,7 +4,7 @@
 
 **An AI-powered hospital digital twin — simulate, forecast, and optimise hospital operations at any scale.**
 
-[![CI](https://github.com/your-org/openhospital-sim/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/openhospital-sim/actions/workflows/ci.yml)
+[![CI](https://github.com/theqasimkhan/openhospital-sim/actions/workflows/ci.yml/badge.svg)](https://github.com/theqasimkhan/openhospital-sim/actions/workflows/ci.yml)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688.svg)](https://fastapi.tiangolo.com)
 [![Next.js 14](https://img.shields.io/badge/Next.js-14-black.svg)](https://nextjs.org)
