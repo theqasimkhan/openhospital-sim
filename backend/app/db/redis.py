@@ -46,7 +46,7 @@ async def connect_redis() -> None:
 async def disconnect_redis() -> None:
     global _redis_client
     if _redis_client:
-        await _redis_client.aclose()
+        await _redis_client.aclose()  # type: ignore[attr-defined]
         _redis_client = None
     logger.info("redis_disconnected")
 

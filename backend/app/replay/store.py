@@ -65,6 +65,8 @@ class StoredStep:
 
 @dataclass
 class SimulationRun:
+    """One recorded simulation run; `sequence` gives stable newest-first ordering."""
+
     run_id:       str
     seed:         int
     config:       dict[str, Any]
@@ -74,6 +76,7 @@ class SimulationRun:
     steps:        list[StoredStep]       = field(default_factory=list)
     initial_state: dict[str, Any]        = field(default_factory=dict)
     tags:          list[str]             = field(default_factory=list)
+    sequence:      int                    = 0
 
     # ── Derived metrics ────────────────────────────────────────────────────────
 
@@ -177,18 +180,21 @@ class ReplayStore:
         self._cursors: dict[str, ReplayCursor]  = {}
         self._current_run_id: str | None        = None
         self._lock: asyncio.Lock                = asyncio.Lock()
+        self._run_sequence: int                 = 0
 
     # ── Recording ──────────────────────────────────────────────────────────────
 
     def begin_run(self, config: dict[str, Any], initial_state: dict[str, Any]) -> str:
         """Called when simulation/start succeeds. Returns a new run_id."""
         run_id = str(uuid.uuid4())
+        self._run_sequence += 1
         run = SimulationRun(
             run_id=run_id,
             seed=config.get("seed", 0),
             config=config,
             status=RunStatus.RECORDING,
             initial_state=initial_state,
+            sequence=self._run_sequence,
         )
         self._evict_if_needed()
         self._runs[run_id] = run
@@ -283,7 +289,7 @@ class ReplayStore:
 
     def list_runs(self, limit: int = 20) -> list[dict[str, Any]]:
         """Return summaries of the most recent runs (newest first)."""
-        runs = sorted(self._runs.values(), key=lambda r: r.started_at, reverse=True)
+        runs = sorted(self._runs.values(), key=lambda r: r.sequence, reverse=True)
         return [r.summary() for r in runs[:limit]]
 
     def get_run(self, run_id: str) -> SimulationRun:

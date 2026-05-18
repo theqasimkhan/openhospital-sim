@@ -7,7 +7,6 @@ The SimPy engine itself is tested directly (no HTTP) for unit-level coverage.
 from __future__ import annotations
 
 import pytest
-import pytest_asyncio
 from httpx import AsyncClient
 
 from app.simulation.config import SimulationConfig
@@ -125,13 +124,14 @@ class TestHospitalSimEngine:
         engine.step(step_minutes=60.0)
         snapshot = engine.get_state_snapshot()
         d = snapshot.to_dict()
-        for key in [
-            "icu_occupancy", "total_icu_beds",
-            "regular_bed_occupancy", "total_regular_beds",
-            "emergency_queue_length", "staff_availability",
-            "active_patients_count", "discharged_count",
-        ]:
-            assert key in d, f"Missing key: {key}"
+        assert d["icu"]["occupancy"] >= 0
+        assert d["icu"]["total_beds"] >= 1
+        assert d["regular_ward"]["occupancy"] >= 0
+        assert d["regular_ward"]["total_beds"] >= 1
+        assert "emergency_queue_length" in d
+        assert "staff" in d
+        assert isinstance(d["active_patients"], list)
+        assert d["outcomes"]["discharged"] >= 0
 
     def test_config_is_accessible(self):
         engine = self._fresh_engine()

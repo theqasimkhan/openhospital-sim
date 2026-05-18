@@ -18,7 +18,7 @@ from typing import Any
 from fastapi import APIRouter, Body, HTTPException, status
 
 from app.core.logging import get_logger
-from app.forecasting.schemas import OptimizationResultSchema, OptimizationRunRequest
+from app.forecasting.schemas import OptimizationRunRequest
 from app.optimization.base import OptimizerConfig
 from app.optimization.genetic_algorithm import GeneticOptimizer
 from app.optimization.greedy import GreedyOptimizer
@@ -32,7 +32,10 @@ logger = get_logger(__name__)
 _latest_result: dict[str, Any] | None = None
 _result_lock: asyncio.Lock = asyncio.Lock()
 
-_OPTIMIZERS = {
+_OPTIMIZERS: dict[
+    str,
+    type[GreedyOptimizer] | type[GeneticOptimizer] | type[ParticleSwarmOptimizer],
+] = {
     "greedy":  GreedyOptimizer,
     "genetic": GeneticOptimizer,
     "pso":     ParticleSwarmOptimizer,

@@ -15,10 +15,10 @@ GET   /simulation/events  – filtered event log query
 """
 from __future__ import annotations
 
-from typing import Annotated, Any
+from typing import Any
 
 from fastapi import APIRouter, Body, HTTPException, Query, status
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field
 
 from app.agents.registry import get_registry, get_registry_lock
 from app.core.logging import get_logger
@@ -49,8 +49,13 @@ class SimConfigOverride(BaseModel):
     max_simulation_time: float | None = Field(None, gt=0.0)
 
 
+def _empty_config_override() -> SimConfigOverride:
+    """Factory for an all-optional override object (mypy-friendly without pydantic plugin)."""
+    return SimConfigOverride.model_construct()
+
+
 class StartRequest(BaseModel):
-    config: SimConfigOverride = Field(default_factory=SimConfigOverride)
+    config: SimConfigOverride = Field(default_factory=_empty_config_override)
 
 
 class StepRequest(BaseModel):

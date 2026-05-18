@@ -76,7 +76,7 @@ class HospitalResources:
         queued = len(resource.queue)
         return ResourceSnapshot(
             name=name,
-            capacity=cap,
+            capacity=int(cap),
             in_use=in_use,
             queued=queued,
             utilization=in_use / max(1, cap),

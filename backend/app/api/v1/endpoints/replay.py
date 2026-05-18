@@ -199,6 +199,7 @@ async def create_cursor(
     summary="Advance replay cursor by one step",
     description="Returns the next step data. Returns 204 No Content when the run is exhausted.",
     status_code=status.HTTP_200_OK,
+    response_model=None,
 )
 async def cursor_next(
     cursor_id: Annotated[str, Path(description="Cursor ID returned by open-cursor")],

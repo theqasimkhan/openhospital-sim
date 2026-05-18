@@ -23,7 +23,6 @@ from __future__ import annotations
 from app.optimization.base import (
     BaseOptimizer,
     ConvergencePoint,
-    OptimizerConfig,
     OptimizationResult,
     OptimizationVariable,
     Solution,
@@ -72,9 +71,8 @@ class GeneticOptimizer(BaseOptimizer):
 
             # Sort by score (descending) for elitism
             ranked = sorted(zip(scores, population), key=lambda x: x[0], reverse=True)
-            scores_sorted, pop_sorted = zip(*ranked)
-            scores_sorted = list(scores_sorted)
-            pop_sorted    = list(pop_sorted)
+            scores_sorted = [s for s, _ in ranked]
+            pop_sorted = [p for _, p in ranked]
 
             new_pop: list[Solution] = list(pop_sorted[: self.ELITE_SIZE])
 
