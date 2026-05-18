@@ -27,9 +27,8 @@ Upgrading to Prophet / ARIMA / XGBoost
 from __future__ import annotations
 
 import math
-import uuid
 from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any
 
 import numpy as np
@@ -182,17 +181,17 @@ class BaseForecaster(ABC):
             level_t = α·x_t + (1−α)·(level_{t-1} + trend_{t-1})
             trend_t = β·(level_t − level_{t-1}) + (1−β)·trend_{t-1}
         """
-        l = values[0]
+        level = values[0]
         b = values[1] - values[0]
         residuals: list[float] = []
 
         for x in values[1:]:
-            l_prev = l
-            l = alpha * x + (1 - alpha) * (l + b)
-            b = beta  * (l - l_prev) + (1 - beta) * b
-            residuals.append(x - (l_prev + b))
+            level_prev = level
+            level = alpha * x + (1 - alpha) * (level + b)
+            b = beta * (level - level_prev) + (1 - beta) * b
+            residuals.append(x - (level_prev + b))
 
-        self._level  = l
+        self._level = level
         self._trend  = b
         self._values = list(values)
         self._fitted = True

@@ -6,7 +6,7 @@ The fastest way to get started:
 
 ```bash
 # 1. Clone and configure
-git clone https://github.com/your-org/openhospital-sim.git
+git clone https://github.com/theqasimkhan/openhospital-sim.git
 cd openhospital-sim
 cp .env.example .env
 
@@ -93,7 +93,7 @@ echo -n "mypassword" | base64
 # 3. Update k8s/configmap.yaml with your domain and settings
 
 # 4. Update image references in deployment yamls
-# Replace: ghcr.io/your-org/ohsim-backend:latest
+# Images from CI: ghcr.io/theqasimkhan/ohsim-backend:latest
 # With your actual registry path
 
 # 5. Apply all manifests

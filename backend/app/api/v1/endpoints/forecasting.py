@@ -20,7 +20,6 @@ from fastapi import APIRouter, Body, HTTPException, status
 
 from app.agents.registry import get_registry, get_registry_lock
 from app.core.logging import get_logger
-from app.forecasting.base import ForecastBundle
 from app.forecasting.demand_forecaster import DemandForecaster
 from app.forecasting.icu_forecaster import ICUForecaster
 from app.forecasting.schemas import ForecastRunRequest
@@ -196,6 +195,8 @@ async def get_latest_forecast() -> dict[str, Any]:
     status_code=status.HTTP_200_OK,
 )
 async def get_surge_risk() -> dict[str, Any]:
+    global _latest_surge_risk
+
     async with _store_lock:
         surge = _latest_surge_risk
 

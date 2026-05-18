@@ -30,7 +30,7 @@ spec:
         runAsUser:    1000
       containers:
         - name: backend
-          image: ghcr.io/your-org/ohsim-backend:latest
+          image: ghcr.io/theqasimkhan/ohsim-backend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000

@@ -4,7 +4,7 @@
 
 **An AI-powered hospital digital twin — simulate, forecast, and optimise hospital operations at any scale.**
 
-[![CI](https://github.com/theqasimkhan/openhospital-sim/actions/workflows/ci.yml/badge.svg)](https://github.com/theqasimkhan/openhospital-sim/actions/workflows/ci.yml)
+[![CI](https://github.com/theqasimkhan/openhospital-sim/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/theqasimkhan/openhospital-sim/actions/workflows/ci.yml)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688.svg)](https://fastapi.tiangolo.com)
 [![Next.js 14](https://img.shields.io/badge/Next.js-14-black.svg)](https://nextjs.org)
@@ -139,7 +139,7 @@ Built for researchers, healthcare operations teams, and engineers who need a rig
 ### 1. Clone & configure
 
 ```bash
-git clone https://github.com/your-org/openhospital-sim.git
+git clone https://github.com/theqasimkhan/openhospital-sim.git
 cd openhospital-sim
 cp .env.example .env
 ```
@@ -392,7 +392,7 @@ Contributions are welcome! Please follow these steps:
 
 - **Bug**: include reproduction steps, expected vs. actual behaviour, and the output of `GET /api/v1/health`
 - **Feature request**: describe the use case and expected API/UI behaviour
-- **Security vulnerability**: email qasimkhankbt@gmail.com (do not open a public issue)
+- **Security vulnerability**: use [GitHub private security advisories](https://github.com/theqasimkhan/openhospital-sim/security/advisories/new) (do not open a public issue for undisclosed problems)
 
 ---
 
