@@ -1,0 +1,36 @@
+# Python artefacts
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.python-version
+
+# Environment files — never commit real secrets
+.env
+.env.local
+.env.production
+.env.staging
+
+# Test & coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+
+# Type checking
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ohsim
+  labels:
+    app.kubernetes.io/name: openhospital-sim
+    app.kubernetes.io/managed-by: kubectl

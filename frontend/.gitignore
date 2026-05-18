@@ -1,0 +1,21 @@
+# Next.js build output
+.next/
+out/
+
+# Dependencies
+node_modules/
+
+# Environment files — never commit real env values
+.env
+.env.local
+.env.*.local
+.env.production
+.env.staging
+
+# TypeScript build info
+*.tsbuildinfo
+next-env.d.ts
+
+# OS
+.DS_Store
+Thumbs.db

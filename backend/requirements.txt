@@ -1,0 +1,36 @@
+# ── Web framework ─────────────────────────────────────────────────────────────
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+
+# ── Configuration & validation ────────────────────────────────────────────────
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+python-dotenv>=1.0.0
+
+# ── Database – PostgreSQL (async) ─────────────────────────────────────────────
+sqlalchemy[asyncio]>=2.0.30
+asyncpg>=0.29.0
+alembic>=1.13.0
+
+# ── Cache – Redis ─────────────────────────────────────────────────────────────
+redis[asyncio]>=5.0.4
+
+# ── Structured logging ────────────────────────────────────────────────────────
+structlog>=24.1.0
+
+# ── HTTP client (used by health checks and inter-service calls) ───────────────
+httpx>=0.27.0
+
+# ── Simulation engine ─────────────────────────────────────────────────────────
+simpy>=4.1.1
+numpy>=1.26.0
+
+# ── Observability (Phase 6) ───────────────────────────────────────────────────
+prometheus_client>=0.20.0
+
+# ── Optimization & forecasting (Phase 4) ─────────────────────────────────────
+# Statistical baseline engines require only numpy (already listed above).
+# Drop-in upgrades (uncomment as needed):
+# prophet>=1.1.5          – Facebook Prophet for seasonality-aware forecasting
+# statsmodels>=0.14.0     – ARIMA / Holt-Winters via statsmodels
+# xgboost>=2.0.0          – Gradient-boosted demand forecasting

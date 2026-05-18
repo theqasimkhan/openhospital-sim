@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ohsim-config
+  namespace: ohsim
+  labels:
+    app.kubernetes.io/name: openhospital-sim
+data:
+  APP_ENV:       "production"
+  APP_NAME:      "OpenHospital Sim"
+  APP_VERSION:   "0.6.0"
+  LOG_JSON:      "true"
+  LOG_LEVEL:     "INFO"
+  POSTGRES_HOST: "postgres-service"
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB:   "openhospital_sim"
+  REDIS_HOST:    "redis-service"
+  REDIS_PORT:    "6379"
+  REDIS_DB:      "0"
+  API_V1_PREFIX: "/api/v1"
+  ALLOWED_ORIGINS: "https://your-domain.com"

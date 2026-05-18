@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --scrollbar-thumb: #1e2d4a;
+  --scrollbar-track: #0a0e1a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0e1a;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2d4270;
+}
+
+/* Panel / card base */
+.panel {
+  @apply bg-surface-2 border border-surface-border rounded-xl;
+}
+
+/* Data label micro-text */
+.data-label {
+  @apply text-xs font-medium tracking-widest uppercase text-text-secondary;
+}
+
+/* Metric value large */
+.metric-value {
+  @apply text-3xl font-bold text-text-primary tabular-nums;
+}
+
+/* Mono text for IDs and values */
+.mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Status glow effects */
+.glow-ok    { box-shadow: 0 0 12px 0 rgba(16, 185, 129, 0.25); }
+.glow-warn  { box-shadow: 0 0 12px 0 rgba(245, 158, 11, 0.25); }
+.glow-crit  { box-shadow: 0 0 12px 0 rgba(239, 68, 68, 0.30); }
+.glow-cyan  { box-shadow: 0 0 12px 0 rgba(0, 212, 255, 0.20); }
+
+/* Recharts overrides */
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
+.recharts-default-tooltip {
+  background-color: #141c2e !important;
+  border: 1px solid #1e2d4a !important;
+  border-radius: 8px !important;
+  color: #e2e8f0 !important;
+}
+
+/* Animated underline for nav items */
+.nav-active {
+  @apply text-brand-cyan;
+  position: relative;
+}
+.nav-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: #00d4ff;
+  border-radius: 1px;
+}
+
+/* Grid background */
+.bg-grid {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(30 45 74 / 0.4)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}

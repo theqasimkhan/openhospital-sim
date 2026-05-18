@@ -1,0 +1,32 @@
+# Exclude everything not needed inside the Docker build context
+# Keeps image builds fast and prevents secrets from leaking into layers
+
+.env
+.env.*
+.git/
+.gitignore
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.tox/
+.venv/
+venv/
+env/
+
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+
+tests/
+htmlcov/
+coverage.xml
+.coverage
+
+*.md
+Dockerfile*
+docker-compose*
+
+*.egg-info/
+dist/
+build/

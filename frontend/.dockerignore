@@ -1,0 +1,19 @@
+# Exclude everything not needed inside the Docker build context
+
+.env
+.env.*
+.env.local
+.env.*.local
+
+.git/
+.gitignore
+.next/
+node_modules/
+
+*.md
+Dockerfile*
+docker-compose*
+
+.DS_Store
+Thumbs.db
+npm-debug.log*
