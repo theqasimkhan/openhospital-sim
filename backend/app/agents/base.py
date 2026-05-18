@@ -16,11 +16,11 @@ from __future__ import annotations
 import time
 import uuid
 from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from enum import Enum
 from typing import Any
 
-from app.simulation.events import SimEvent, SimEventType
+from app.simulation.events import SimEvent
 from app.simulation.state import StateSnapshot
 
 

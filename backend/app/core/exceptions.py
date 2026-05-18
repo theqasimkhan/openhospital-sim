@@ -2,8 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from fastapi import HTTPException, Request, status
-from fastapi.exception_handlers import http_exception_handler
+from fastapi import Request, status
 from fastapi.responses import JSONResponse
 
 from app.core.logging import get_logger

@@ -5,7 +5,7 @@ All time values are in simulation minutes unless noted otherwise.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 
 @dataclass

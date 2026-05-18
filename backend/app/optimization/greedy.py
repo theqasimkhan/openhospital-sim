@@ -19,10 +19,8 @@ from __future__ import annotations
 from app.optimization.base import (
     BaseOptimizer,
     ConvergencePoint,
-    OptimizerConfig,
     OptimizationResult,
     OptimizationVariable,
-    Solution,
     baseline_solution,
 )
 from app.optimization.evaluator import default_evaluator

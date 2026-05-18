@@ -19,7 +19,6 @@ OBJECTIVES. Adjust WEIGHTS to change the composite scoring.
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any
 
 from app.optimization.base import ObjectiveScore, Solution
 from app.simulation.state import StateSnapshot

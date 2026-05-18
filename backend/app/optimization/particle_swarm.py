@@ -17,14 +17,13 @@ and matches the Greedy / Genetic API exactly.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 import numpy as np
 
 from app.optimization.base import (
     BaseOptimizer,
     ConvergencePoint,
-    OptimizerConfig,
     OptimizationResult,
     OptimizationVariable,
     Solution,
