@@ -392,7 +392,7 @@ Contributions are welcome! Please follow these steps:
 
 - **Bug**: include reproduction steps, expected vs. actual behaviour, and the output of `GET /api/v1/health`
 - **Feature request**: describe the use case and expected API/UI behaviour
-- **Security vulnerability**: email security@your-org.com (do not open a public issue)
+- **Security vulnerability**: email qasimkhankbt@gmail.com (do not open a public issue)
 
 ---
 
