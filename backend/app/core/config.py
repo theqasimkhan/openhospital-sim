@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     # ── Application ──────────────────────────────────────────────────────────
     APP_NAME: str = "OpenHospital Sim"
     APP_VERSION: str = "0.1.0"
-    APP_ENV: Literal["development", "staging", "production"] = "development"
+    APP_ENV: Literal["development", "staging", "production", "testing"] = "development"
     DEBUG: bool = False
     API_V1_PREFIX: str = "/api/v1"
 
