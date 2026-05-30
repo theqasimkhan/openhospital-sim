@@ -51,14 +51,24 @@ async_session: async_sessionmaker[AsyncSession] = async_sessionmaker(
 # ── Lifecycle helpers ─────────────────────────────────────────────────────────
 
 async def connect_db() -> None:
-    """Verify the database connection on startup."""
+    """Verify the database connection on startup.
+
+    A failed connection is logged as a critical warning but does NOT crash
+    the application. The simulation engine runs entirely in-memory and will
+    continue to function without a database. Persistence features (Phase 7)
+    will fail gracefully when called.
+    """
     try:
         async with engine.connect() as conn:
             await conn.execute(__import__("sqlalchemy").text("SELECT 1"))
         logger.info("database_connected", url=settings.POSTGRES_HOST)
-    except Exception as exc:  # pragma: no cover
-        logger.error("database_connection_failed", error=str(exc))
-        raise
+    except Exception as exc:
+        logger.warning(
+            "database_connection_failed – running without persistence",
+            host=settings.POSTGRES_HOST,
+            port=settings.POSTGRES_PORT,
+            error=str(exc),
+        )
 
 
 async def disconnect_db() -> None:

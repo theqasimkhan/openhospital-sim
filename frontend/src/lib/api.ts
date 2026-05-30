@@ -90,8 +90,9 @@ export async function resetSimulation(): Promise<void> {
 
 export async function fetchSimulationState(): Promise<HospitalSnapshot> {
   try {
-    const result = await apiFetch<{ snapshot: HospitalSnapshot }>('/api/v1/simulation/state')
-    return result.snapshot ?? result as unknown as HospitalSnapshot
+    // Backend returns SimulationResponse: { status, simulation_time, engine_status, data: { state, resources } }
+    const result = await apiFetch<{ data: { state: HospitalSnapshot } }>('/api/v1/simulation/state')
+    return result.data.state
   } catch {
     return MOCK_SNAPSHOT
   }

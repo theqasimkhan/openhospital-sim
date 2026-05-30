@@ -30,7 +30,11 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 h
 
     # ── CORS ─────────────────────────────────────────────────────────────────
-    ALLOWED_ORIGINS: list[AnyHttpUrl | str] = ["http://localhost:3000"]
+    ALLOWED_ORIGINS: list[AnyHttpUrl | str] = [
+        "http://localhost:3000",
+        "http://localhost:3001",  # Next.js dev server (make dev-frontend)
+        "http://frontend:3000",   # Docker Compose internal networking
+    ]
 
     @field_validator("ALLOWED_ORIGINS", mode="before")
     @classmethod

@@ -55,7 +55,7 @@ export function TopBar({ title, subtitle, actions }: TopBarProps) {
         <div className="flex items-baseline gap-3">
           <h1 className="text-base font-semibold text-text-primary truncate">{title}</h1>
           {subtitle && (
-            <span className="text-xs text-text-muted hidden sm:block">{subtitle}</span>
+            <span suppressHydrationWarning className="text-xs text-text-muted hidden sm:block">{subtitle}</span>
           )}
         </div>
       </div>
@@ -68,7 +68,7 @@ export function TopBar({ title, subtitle, actions }: TopBarProps) {
         {/* Time */}
         <div className="flex items-center gap-1.5 text-text-muted">
           <Clock className="w-3.5 h-3.5" />
-          <span className="text-xs font-mono tabular-nums">
+          <span suppressHydrationWarning className="text-xs font-mono tabular-nums">
             {time.toLocaleTimeString('en-US', { hour12: false })}
           </span>
         </div>

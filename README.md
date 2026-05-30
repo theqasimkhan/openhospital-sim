@@ -234,7 +234,15 @@ curl http://localhost:8000/api/v1/metrics
 
 ## Dashboard Screenshots
 
-> Screenshots coming soon — see the live demo link at the top of this page.
+![Dashboard](docs/screenshots/dashboard.png)
+
+![Simulation](docs/screenshots/simulation.png)
+
+![Agents](docs/screenshots/agents.png)
+
+![Forecasting](docs/screenshots/forecasting.png)
+
+![Optimization](docs/screenshots/optimization.png)
 
 | Page | Description |
 |------|-------------|

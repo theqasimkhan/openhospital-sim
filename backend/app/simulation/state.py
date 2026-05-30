@@ -230,6 +230,9 @@ class HospitalStateManager:
         # Historical snapshots (for rollback anchoring)
         self._snapshots: list[StateSnapshot] = []
 
+    # ── Snapshot history cap ───────────────────────────────────────────────────
+    _SNAPSHOT_HISTORY_CAP: int = 500  # oldest evicted beyond this limit
+
     def reset(self) -> None:
         self._reset_counters()
 
@@ -405,6 +408,9 @@ class HospitalStateManager:
             event_history_count=event_history_count,
         )
         self._snapshots.append(snap)
+        # Evict oldest snapshot if the history cap is exceeded
+        if len(self._snapshots) > self._SNAPSHOT_HISTORY_CAP:
+            self._snapshots = self._snapshots[-self._SNAPSHOT_HISTORY_CAP:]
         return snap
 
     def get_snapshots(self) -> list[StateSnapshot]:

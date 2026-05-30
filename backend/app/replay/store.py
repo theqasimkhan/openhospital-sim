@@ -16,7 +16,6 @@ Design
 """
 from __future__ import annotations
 
-import asyncio
 import json
 import time
 import uuid
@@ -156,11 +155,13 @@ class SimulationRun:
 class ReplayCursor:
     """Tracks playback position for a replay session."""
     run_id:       str
+    total_steps:  int  # snapshot of run length at cursor creation; updated on each step
     current_step: int = 0          # next step index to deliver
 
     @property
     def is_exhausted(self) -> bool:
-        return False  # checked against run.steps length externally
+        """True when there are no more steps to replay."""
+        return self.current_step >= self.total_steps
 
 
 # ── ReplayStore singleton ──────────────────────────────────────────────────────
@@ -179,7 +180,6 @@ class ReplayStore:
         self._runs:    dict[str, SimulationRun] = {}
         self._cursors: dict[str, ReplayCursor]  = {}
         self._current_run_id: str | None        = None
-        self._lock: asyncio.Lock                = asyncio.Lock()
         self._run_sequence: int                 = 0
 
     # ── Recording ──────────────────────────────────────────────────────────────
@@ -245,7 +245,11 @@ class ReplayStore:
         if run_id not in self._runs:
             raise KeyError(f"Run '{run_id}' not found")
         cursor_id = str(uuid.uuid4())
-        self._cursors[cursor_id] = ReplayCursor(run_id=run_id)
+        run = self._runs[run_id]
+        self._cursors[cursor_id] = ReplayCursor(
+            run_id=run_id,
+            total_steps=len(run.steps),
+        )
         return cursor_id
 
     def replay_step(self, cursor_id: str) -> dict[str, Any] | None:
@@ -263,11 +267,13 @@ class ReplayStore:
             return None
         step = run.steps[cursor.current_step]
         cursor.current_step += 1
+        # Keep cursor's total_steps in sync with the live run (may still be recording)
+        cursor.total_steps = len(run.steps)
         return {
             **step.to_dict(),
             "cursor_position": cursor.current_step,
             "total_steps":     len(run.steps),
-            "exhausted":       cursor.current_step >= len(run.steps),
+            "exhausted":       cursor.is_exhausted,
         }
 
     def seek_cursor(self, cursor_id: str, step_index: int) -> None:
@@ -311,9 +317,6 @@ class ReplayStore:
             )
             for run in oldest[: len(self._runs) - self.MAX_RUNS + 1]:
                 del self._runs[run.run_id]
-
-    def get_lock(self) -> asyncio.Lock:
-        return self._lock
 
 
 # ── Global singleton ───────────────────────────────────────────────────────────

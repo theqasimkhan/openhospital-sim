@@ -146,20 +146,36 @@ if PROMETHEUS_AVAILABLE:
 # ── Update helpers (called from endpoints) ─────────────────────────────────────
 
 def update_state_metrics(snapshot: dict) -> None:
-    """Push a StateSnapshot dict into the gauge metrics."""
+    """Push a StateSnapshot dict into the gauge metrics.
+
+    StateSnapshot.to_dict() uses a *nested* structure:
+        snapshot["icu"]["occupancy"]          (not snapshot["icu_occupancy"])
+        snapshot["regular_ward"]["occupancy"] (not snapshot["regular_bed_occupancy"])
+        snapshot["staff"]["available_doctors"] / ["total_doctors"] etc.
+    """
     if not PROMETHEUS_AVAILABLE:
         return
     try:
-        icu_occ  = snapshot.get("icu_occupancy", 0)
-        icu_tot  = snapshot.get("total_icu_beds", 1)
-        ward_occ = snapshot.get("regular_bed_occupancy", 0)
-        ward_tot = snapshot.get("total_regular_beds", 1)
+        icu      = snapshot.get("icu", {})
+        ward     = snapshot.get("regular_ward", {})
+        staff    = snapshot.get("staff", {})
+
+        icu_occ  = icu.get("occupancy", 0)
+        icu_tot  = icu.get("total_beds", 1)
+        ward_occ = ward.get("occupancy", 0)
+        ward_tot = ward.get("total_beds", 1)
 
         ICU_OCCUPANCY_RATIO.set(icu_occ / max(icu_tot, 1))
         WARD_OCCUPANCY_RATIO.set(ward_occ / max(ward_tot, 1))
         EMERGENCY_QUEUE.set(snapshot.get("emergency_queue_length", 0))
-        STAFF_AVAILABILITY.set(snapshot.get("staff_availability", 1.0))
-        ACTIVE_PATIENTS.set(snapshot.get("active_patients_count", 0))
+
+        # Compute staff availability as fraction of staff currently on duty
+        avail = staff.get("available_doctors", 0) + staff.get("available_nurses", 0)
+        total = staff.get("total_doctors", 1) + staff.get("total_nurses", 1)
+        STAFF_AVAILABILITY.set(avail / max(total, 1))
+
+        # active_patients is a list in the snapshot
+        ACTIVE_PATIENTS.set(len(snapshot.get("active_patients", [])))
     except Exception:
         pass
 

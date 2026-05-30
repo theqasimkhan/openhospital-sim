@@ -38,9 +38,14 @@ async def connect_redis() -> None:
     try:
         await _redis_client.ping()
         logger.info("redis_connected", host=settings.REDIS_HOST, db=settings.REDIS_DB)
-    except RedisConnectionError as exc:  # pragma: no cover
-        logger.error("redis_connection_failed", error=str(exc))
-        raise
+    except RedisConnectionError as exc:
+        logger.warning(
+            "redis_connection_failed – running without cache",
+            host=settings.REDIS_HOST,
+            port=settings.REDIS_PORT,
+            error=str(exc),
+        )
+        # Keep the client object; individual call-sites handle unavailability.
 
 
 async def disconnect_redis() -> None:
