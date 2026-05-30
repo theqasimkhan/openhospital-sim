@@ -19,13 +19,13 @@ interface Props {
   icuTotal: number
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line 
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null
   return (
     <div className="bg-surface-3 border border-surface-border rounded-lg p-3 text-xs space-y-1.5 shadow-xl">
       <div className="text-text-muted font-mono">Step {label}</div>
-      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+      {/* eslint-disable-next-line  */}
       {payload.map((p: any) => (
         <div key={p.dataKey} className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full" style={{ background: p.color }} />

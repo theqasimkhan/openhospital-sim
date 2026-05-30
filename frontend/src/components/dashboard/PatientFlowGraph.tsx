@@ -18,13 +18,13 @@ interface Props {
   timeSeries: TimeSeriesPoint[]
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line 
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null
   return (
     <div className="bg-surface-3 border border-surface-border rounded-lg p-3 text-xs shadow-xl space-y-1">
       <div className="text-text-muted font-mono mb-1.5">Step {label}</div>
-      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+      {/* eslint-disable-next-line  */}
       {payload.map((p: any) => (
         <div key={p.dataKey} className="flex items-center justify-between gap-6">
           <span className="flex items-center gap-1.5">

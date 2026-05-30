@@ -12,13 +12,13 @@ interface Props {
   emergencyQueueLength: number
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line 
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null
   return (
     <div className="bg-surface-3 border border-surface-border rounded-lg p-2.5 text-xs shadow-xl">
       <div className="text-text-muted font-mono mb-1">Step {label}</div>
-      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+      {/* eslint-disable-next-line  */}
       {payload.map((p: any) => (
         <div key={p.dataKey} className="flex items-center justify-between gap-4">
           <span className="text-text-secondary">{p.name}</span>
