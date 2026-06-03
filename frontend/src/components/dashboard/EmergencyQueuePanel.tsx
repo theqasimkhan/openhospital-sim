@@ -43,9 +43,9 @@ function getQueueLevel(q: number) {
   return QUEUE_LEVELS[0]
 }
 
-export function EmergencyQueuePanel({ timeSeries, emergencyQueueLength }: Props) {
+export function EmergencyQueuePanel({ timeSeries = [], emergencyQueueLength }: Props) {
   const queueLevel = getQueueLevel(emergencyQueueLength)
-  const data = timeSeries.map((p) => ({
+  const data = (timeSeries ?? []).map((p) => ({
     step: p.step,
     queue: p.queue_length,
     arrivals: p.arrivals,

@@ -16,6 +16,7 @@ interface Props {
 }
 
 export function StaffUtilizationChart({ snapshot }: Props) {
+  if (!snapshot) return null
   const data = [
     { metric: 'Doctor\nWorkload', value: Math.round(snapshot.doctor_workload * 100) },
     { metric: 'Nurse\nWorkload', value: Math.round(snapshot.nurse_workload * 100) },

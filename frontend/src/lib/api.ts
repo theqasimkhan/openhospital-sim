@@ -92,7 +92,7 @@ export async function fetchSimulationState(): Promise<HospitalSnapshot> {
   try {
     // Backend returns SimulationResponse: { status, simulation_time, engine_status, data: { state, resources } }
     const result = await apiFetch<{ data: { state: HospitalSnapshot } }>('/api/v1/simulation/state')
-    return result.data.state
+    return result?.data?.state ?? MOCK_SNAPSHOT
   } catch {
     return MOCK_SNAPSHOT
   }
@@ -165,7 +165,8 @@ export async function fetchForecastTimeSeries(): Promise<TimeSeriesPoint[]> {
     const result = await apiFetch<{ time_series: TimeSeriesPoint[] } | TimeSeriesPoint[]>(
       '/api/v1/agents/forecast/timeseries'
     )
-    return Array.isArray(result) ? result : result.time_series
+    const series = Array.isArray(result) ? result : result.time_series
+    return Array.isArray(series) && series.length > 0 ? series : MOCK_TIME_SERIES
   } catch {
     return MOCK_TIME_SERIES
   }

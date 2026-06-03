@@ -41,8 +41,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   )
 }
 
-export function ICUOccupancyChart({ timeSeries, icuTotal }: Props) {
-  const data = timeSeries.map((p) => ({
+export function ICUOccupancyChart({ timeSeries = [], icuTotal }: Props) {
+  const data = (timeSeries ?? []).map((p) => ({
     step: p.step,
     icu_util: p.icu_utilization,
     ward_util: p.ward_utilization,

@@ -38,8 +38,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   )
 }
 
-export function PatientFlowGraph({ timeSeries }: Props) {
-  const data = timeSeries.map((p) => ({
+export function PatientFlowGraph({ timeSeries = [] }: Props) {
+  const data = (timeSeries ?? []).map((p) => ({
     step: p.step,
     arrivals: p.arrivals,
     discharged: p.discharged,
