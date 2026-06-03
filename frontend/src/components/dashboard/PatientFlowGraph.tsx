@@ -63,20 +63,20 @@ export function PatientFlowGraph({ timeSeries }: Props) {
       />
       <ResponsiveContainer width="100%" height={220}>
         <ComposedChart data={data} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1e2d4a" />
-          <XAxis dataKey="step" tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} />
-          <YAxis tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#CBD5E1" />
+          <XAxis dataKey="step" tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} />
+          <YAxis tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} />
           <Tooltip content={<CustomTooltip />} />
-          <Bar dataKey="arrivals" name="Arrivals" fill="#00d4ff" opacity={0.7} radius={[2, 2, 0, 0]} />
-          <Bar dataKey="discharged" name="Discharged" fill="#10b981" opacity={0.7} radius={[2, 2, 0, 0]} />
-          <Bar dataKey="deceased" name="Deceased" fill="#ef4444" opacity={0.8} radius={[2, 2, 0, 0]} />
+          <Bar dataKey="arrivals" name="Arrivals" fill="#06B6D4" opacity={0.7} radius={[2, 2, 0, 0]} />
+          <Bar dataKey="discharged" name="Discharged" fill="#10B981" opacity={0.7} radius={[2, 2, 0, 0]} />
+          <Bar dataKey="deceased" name="Deceased" fill="#EF4444" opacity={0.8} radius={[2, 2, 0, 0]} />
           <Line
             type="monotone"
             dataKey="net"
             name="Net Flow"
-            stroke="#f59e0b"
+            stroke="#F59E0B"
             strokeWidth={2}
-            dot={{ r: 3, fill: '#f59e0b' }}
+            dot={{ r: 3, fill: '#F59E0B' }}
           />
         </ComposedChart>
       </ResponsiveContainer>

@@ -146,19 +146,19 @@ export function ResourceAnalytics({ result, snapshot }: Props) {
           <SectionHeader title="Convergence History" subtitle="Score improvement per generation" className="mb-4" />
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={convergenceData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e2d4a" />
-              <XAxis dataKey="iteration" tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} />
-              <YAxis tickFormatter={(v) => `${v.toFixed(0)}%`} tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} domain={['dataMin - 2', 'dataMax + 2']} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#CBD5E1" />
+              <XAxis dataKey="iteration" tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} />
+              <YAxis tickFormatter={(v) => `${v.toFixed(0)}%`} tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} domain={['dataMin - 2', 'dataMax + 2']} />
               <Tooltip
-                contentStyle={{ background: '#141c2e', border: '1px solid #1e2d4a', borderRadius: 8, color: '#e2e8f0', fontSize: 12 }}
+                contentStyle={{ background: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: 8, color: '#0F172A', fontSize: 12 }}
                 formatter={(v: number) => [`${v.toFixed(2)}%`, 'Score']}
               />
               <Line
                 type="monotone"
                 dataKey="score"
-                stroke="#10b981"
+                stroke="#10B981"
                 strokeWidth={2.5}
-                dot={{ r: 3, fill: '#10b981' }}
+                dot={{ r: 3, fill: '#10B981' }}
               />
             </LineChart>
           </ResponsiveContainer>
@@ -168,11 +168,11 @@ export function ResourceAnalytics({ result, snapshot }: Props) {
           <SectionHeader title="Multi-Objective Score Profile" subtitle="Optimal solution breakdown" className="mb-4" />
           <ResponsiveContainer width="100%" height={200}>
             <RadarChart data={radarData}>
-              <PolarGrid stroke="#1e2d4a" />
-              <PolarAngleAxis dataKey="metric" tick={{ fill: '#94a3b8', fontSize: 10 }} />
-              <Radar name="Score" dataKey="score" stroke="#10b981" fill="#10b981" fillOpacity={0.15} strokeWidth={2} />
+              <PolarGrid stroke="#CBD5E1" />
+              <PolarAngleAxis dataKey="metric" tick={{ fill: '#64748B', fontSize: 10 }} />
+              <Radar name="Score" dataKey="score" stroke="#10B981" fill="#10B981" fillOpacity={0.15} strokeWidth={2} />
               <Tooltip
-                contentStyle={{ background: '#141c2e', border: '1px solid #1e2d4a', borderRadius: 8, color: '#e2e8f0', fontSize: 12 }}
+                contentStyle={{ background: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: 8, color: '#0F172A', fontSize: 12 }}
                 formatter={(v: number) => [`${v}%`, 'Score']}
               />
             </RadarChart>

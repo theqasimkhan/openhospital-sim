@@ -10,29 +10,30 @@ const config: Config = {
     extend: {
       colors: {
         surface: {
-          DEFAULT: '#0a0e1a',
-          1: '#0f1524',
-          2: '#141c2e',
-          3: '#1a2338',
-          4: '#1f2a42',
-          border: '#1e2d4a',
+          DEFAULT: '#F8FAFC',
+          1: '#FFFFFF',
+          2: '#F1F5F9',
+          3: '#E2E8F0',
+          4: '#FFFFFF',
+          border: '#CBD5E1',
         },
         brand: {
-          cyan: '#00d4ff',
-          blue: '#0080ff',
-          purple: '#7c3aed',
+          cyan: '#06B6D4',
+          blue: '#2563EB',
+          teal: '#14B8A6',
+          navy: '#1E3A8A',
         },
         status: {
-          ok: '#10b981',
-          warn: '#f59e0b',
-          critical: '#ef4444',
-          info: '#3b82f6',
+          ok: '#10B981',
+          warn: '#F59E0B',
+          critical: '#EF4444',
+          info: '#3B82F6',
         },
         text: {
-          primary: '#e2e8f0',
-          secondary: '#94a3b8',
-          muted: '#475569',
-          accent: '#00d4ff',
+          primary: '#0F172A',
+          secondary: '#475569',
+          muted: '#64748B',
+          accent: '#2563EB',
         },
       },
       fontFamily: {
@@ -40,7 +41,7 @@ const config: Config = {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
-        'grid-pattern': "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(30 45 74 / 0.6)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
+        'grid-pattern': "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(203 213 225 / 0.6)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',

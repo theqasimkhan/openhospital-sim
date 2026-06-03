@@ -42,22 +42,22 @@ export function StaffUtilizationChart({ snapshot }: Props) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <ResponsiveContainer width="100%" height={200}>
           <RadarChart data={data}>
-            <PolarGrid stroke="#1e2d4a" />
+            <PolarGrid stroke="#CBD5E1" />
             <PolarAngleAxis
               dataKey="metric"
-              tick={{ fill: '#94a3b8', fontSize: 10 }}
+              tick={{ fill: '#64748B', fontSize: 10 }}
               tickLine={false}
             />
             <Radar
               name="Utilization"
               dataKey="value"
-              stroke="#00d4ff"
-              fill="#00d4ff"
+              stroke="#06B6D4"
+              fill="#06B6D4"
               fillOpacity={0.15}
               strokeWidth={2}
             />
             <Tooltip
-              contentStyle={{ background: '#141c2e', border: '1px solid #1e2d4a', borderRadius: 8, color: '#e2e8f0', fontSize: 12 }}
+              contentStyle={{ background: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: 8, color: '#0F172A', fontSize: 12 }}
               formatter={(v: number) => [`${v}%`, 'Utilization']}
             />
           </RadarChart>
@@ -65,7 +65,7 @@ export function StaffUtilizationChart({ snapshot }: Props) {
 
         <div className="space-y-3 self-center">
           {staffRows.map((row) => {
-            const color = row.pct >= 0.9 ? '#ef4444' : row.pct >= 0.75 ? '#f59e0b' : '#10b981'
+            const color = row.pct >= 0.9 ? '#EF4444' : row.pct >= 0.75 ? '#F59E0B' : '#10B981'
             return (
               <div key={row.label} className="space-y-1">
                 <div className="flex items-center justify-between text-xs">

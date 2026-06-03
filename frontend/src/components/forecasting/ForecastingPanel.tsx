@@ -128,7 +128,7 @@ export function ForecastingPanel({ bundle, timeSeries, onRunForecast, loading }:
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
           {surgeSignals.map(([signal, value]) => {
             const pct = value * 100
-            const color = pct >= 75 ? '#ef4444' : pct >= 50 ? '#f59e0b' : '#10b981'
+            const color = pct >= 75 ? '#EF4444' : pct >= 50 ? '#F59E0B' : '#10B981'
             return (
               <div key={signal} className="space-y-1.5">
                 <div className="flex items-center justify-between text-[10px]">
@@ -177,17 +177,17 @@ export function ForecastingPanel({ bundle, timeSeries, onRunForecast, loading }:
         />
         <ResponsiveContainer width="100%" height={220}>
           <LineChart data={icuData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1e2d4a" />
-            <XAxis dataKey="step" tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} />
-            <YAxis tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} domain={[0, 1]} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#CBD5E1" />
+            <XAxis dataKey="step" tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} />
+            <YAxis tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} domain={[0, 1]} />
             <Tooltip content={<ForecastTooltip />} />
-            <Legend iconSize={8} wrapperStyle={{ fontSize: 11, color: '#94a3b8' }} />
-            <ReferenceLine x={timeSeries[timeSeries.length - 1]?.step} stroke="#475569" strokeDasharray="4 4" label={{ value: 'Now', fill: '#94a3b8', fontSize: 10 }} />
-            <ReferenceLine y={0.9} stroke="#ef4444" strokeDasharray="4 4" strokeWidth={1} />
-            <Line type="monotone" dataKey="actual" name="Actual" stroke="#00d4ff" strokeWidth={2} dot={false} connectNulls={false} />
-            <Line type="monotone" dataKey="forecast" name="Forecast" stroke="#7c3aed" strokeWidth={2} strokeDasharray="6 3" dot={false} connectNulls={false} />
-            <Line type="monotone" dataKey="upper" name="Upper" stroke="#7c3aed" strokeWidth={1} strokeDasharray="3 3" dot={false} connectNulls={false} opacity={0.4} />
-            <Line type="monotone" dataKey="lower" name="Lower" stroke="#7c3aed" strokeWidth={1} strokeDasharray="3 3" dot={false} connectNulls={false} opacity={0.4} />
+            <Legend iconSize={8} wrapperStyle={{ fontSize: 11, color: '#64748B' }} />
+            <ReferenceLine x={timeSeries[timeSeries.length - 1]?.step} stroke="#64748B" strokeDasharray="4 4" label={{ value: 'Now', fill: '#64748B', fontSize: 10 }} />
+            <ReferenceLine y={0.9} stroke="#EF4444" strokeDasharray="4 4" strokeWidth={1} />
+            <Line type="monotone" dataKey="actual" name="Actual" stroke="#06B6D4" strokeWidth={2} dot={false} connectNulls={false} />
+            <Line type="monotone" dataKey="forecast" name="Forecast" stroke="#14B8A6" strokeWidth={2} strokeDasharray="6 3" dot={false} connectNulls={false} />
+            <Line type="monotone" dataKey="upper" name="Upper" stroke="#14B8A6" strokeWidth={1} strokeDasharray="3 3" dot={false} connectNulls={false} opacity={0.4} />
+            <Line type="monotone" dataKey="lower" name="Lower" stroke="#14B8A6" strokeWidth={1} strokeDasharray="3 3" dot={false} connectNulls={false} opacity={0.4} />
           </LineChart>
         </ResponsiveContainer>
       </Panel>
@@ -203,13 +203,13 @@ export function ForecastingPanel({ bundle, timeSeries, onRunForecast, loading }:
           />
           <ResponsiveContainer width="100%" height={180}>
             <LineChart data={wardData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e2d4a" />
-              <XAxis dataKey="step" tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} />
-              <YAxis tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} domain={[0, 1]} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#CBD5E1" />
+              <XAxis dataKey="step" tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} />
+              <YAxis tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} domain={[0, 1]} />
               <Tooltip content={<ForecastTooltip />} />
-              <ReferenceLine x={timeSeries[timeSeries.length - 1]?.step} stroke="#475569" strokeDasharray="4 4" />
-              <Line type="monotone" dataKey="actual" name="Actual" stroke="#0080ff" strokeWidth={2} dot={false} connectNulls={false} />
-              <Line type="monotone" dataKey="forecast" name="Forecast" stroke="#7c3aed" strokeWidth={2} strokeDasharray="6 3" dot={false} connectNulls={false} />
+              <ReferenceLine x={timeSeries[timeSeries.length - 1]?.step} stroke="#64748B" strokeDasharray="4 4" />
+              <Line type="monotone" dataKey="actual" name="Actual" stroke="#2563EB" strokeWidth={2} dot={false} connectNulls={false} />
+              <Line type="monotone" dataKey="forecast" name="Forecast" stroke="#14B8A6" strokeWidth={2} strokeDasharray="6 3" dot={false} connectNulls={false} />
             </LineChart>
           </ResponsiveContainer>
         </Panel>
@@ -223,13 +223,13 @@ export function ForecastingPanel({ bundle, timeSeries, onRunForecast, loading }:
           />
           <ResponsiveContainer width="100%" height={180}>
             <LineChart data={demandData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e2d4a" />
-              <XAxis dataKey="step" tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} />
-              <YAxis tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#CBD5E1" />
+              <XAxis dataKey="step" tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} />
+              <YAxis tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} />
               <Tooltip content={<ForecastTooltip />} />
-              <ReferenceLine x={timeSeries[timeSeries.length - 1]?.step} stroke="#475569" strokeDasharray="4 4" />
-              <Line type="monotone" dataKey="actual" name="Actual" stroke="#10b981" strokeWidth={2} dot={false} connectNulls={false} />
-              <Line type="monotone" dataKey="forecast" name="Forecast" stroke="#7c3aed" strokeWidth={2} strokeDasharray="6 3" dot={false} connectNulls={false} />
+              <ReferenceLine x={timeSeries[timeSeries.length - 1]?.step} stroke="#64748B" strokeDasharray="4 4" />
+              <Line type="monotone" dataKey="actual" name="Actual" stroke="#10B981" strokeWidth={2} dot={false} connectNulls={false} />
+              <Line type="monotone" dataKey="forecast" name="Forecast" stroke="#14B8A6" strokeWidth={2} strokeDasharray="6 3" dot={false} connectNulls={false} />
             </LineChart>
           </ResponsiveContainer>
         </Panel>

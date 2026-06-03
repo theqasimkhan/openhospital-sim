@@ -89,10 +89,10 @@ interface CapacityBarProps {
 export function CapacityBar({ label, value, max, unit = '', className }: CapacityBarProps) {
   const pct = max > 0 ? (value / max) * 100 : 0
   const color =
-    pct >= 90 ? '#ef4444' :
-    pct >= 75 ? '#f59e0b' :
-    pct >= 50 ? '#00d4ff' :
-    '#10b981'
+    pct >= 90 ? '#EF4444' :
+    pct >= 75 ? '#F59E0B' :
+    pct >= 50 ? '#06B6D4' :
+    '#10B981'
 
   return (
     <div className={clsx('space-y-1.5', className)}>

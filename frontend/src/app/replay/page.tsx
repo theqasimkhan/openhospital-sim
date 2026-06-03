@@ -66,16 +66,16 @@ export default function ReplayPage() {
   }))
 
   const EVENT_COLORS: Record<string, string> = {
-    PATIENT_ARRIVED: '#00d4ff',
-    ICU_TRANSFER: '#f59e0b',
-    DISCHARGE: '#10b981',
-    PATIENT_DEATH: '#ef4444',
-    EMERGENCY_SPIKE: '#ef4444',
+    PATIENT_ARRIVED: '#06B6D4',
+    ICU_TRANSFER: '#F59E0B',
+    DISCHARGE: '#10B981',
+    PATIENT_DEATH: '#EF4444',
+    EMERGENCY_SPIKE: '#EF4444',
     STAFF_SHORTAGE: '#f97316',
-    STAFF_RESTORED: '#10b981',
-    TRIAGE_COMPLETE: '#0080ff',
-    DOCTOR_ASSIGNED: '#10b981',
-    TREATMENT_STARTED: '#10b981',
+    STAFF_RESTORED: '#10B981',
+    TRIAGE_COMPLETE: '#2563EB',
+    DOCTOR_ASSIGNED: '#10B981',
+    TREATMENT_STARTED: '#10B981',
   }
 
   return (
@@ -206,19 +206,19 @@ export default function ReplayPage() {
               <SectionHeader title="Replay Timeline" subtitle="Utilization & queue · animated playback" className="mb-4" />
               <ResponsiveContainer width="100%" height={260}>
                 <LineChart data={chartData} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1e2d4a" />
-                  <XAxis dataKey="step" tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} />
-                  <YAxis yAxisId="left" tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} domain={[0, 1]} />
-                  <YAxis yAxisId="right" orientation="right" tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} />
-                  <Tooltip contentStyle={{ background: '#141c2e', border: '1px solid #1e2d4a', borderRadius: 8, color: '#e2e8f0', fontSize: 12 }} />
-                  <ReferenceLine yAxisId="left" y={0.9} stroke="#ef4444" strokeDasharray="4 4" strokeWidth={1} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#CBD5E1" />
+                  <XAxis dataKey="step" tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} />
+                  <YAxis yAxisId="left" tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} domain={[0, 1]} />
+                  <YAxis yAxisId="right" orientation="right" tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} />
+                  <Tooltip contentStyle={{ background: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: 8, color: '#0F172A', fontSize: 12 }} />
+                  <ReferenceLine yAxisId="left" y={0.9} stroke="#EF4444" strokeDasharray="4 4" strokeWidth={1} />
                   {activePoint && (
-                    <ReferenceLine xAxisId={undefined} x={activePoint.step} stroke="#00d4ff" strokeWidth={1.5} strokeDasharray="4 4" yAxisId="left" />
+                    <ReferenceLine xAxisId={undefined} x={activePoint.step} stroke="#06B6D4" strokeWidth={1.5} strokeDasharray="4 4" yAxisId="left" />
                   )}
-                  <Line yAxisId="left" type="monotone" dataKey="icu" name="ICU Util." stroke="#00d4ff" strokeWidth={2} dot={false} />
-                  <Line yAxisId="left" type="monotone" dataKey="ward" name="Ward Util." stroke="#0080ff" strokeWidth={2} dot={false} />
-                  <Line yAxisId="right" type="monotone" dataKey="queue" name="Queue" stroke="#f59e0b" strokeWidth={1.5} dot={false} strokeDasharray="4 3" />
-                  <Line yAxisId="right" type="monotone" dataKey="arrivals" name="Arrivals" stroke="#10b981" strokeWidth={1.5} dot={false} strokeDasharray="4 3" />
+                  <Line yAxisId="left" type="monotone" dataKey="icu" name="ICU Util." stroke="#06B6D4" strokeWidth={2} dot={false} />
+                  <Line yAxisId="left" type="monotone" dataKey="ward" name="Ward Util." stroke="#2563EB" strokeWidth={2} dot={false} />
+                  <Line yAxisId="right" type="monotone" dataKey="queue" name="Queue" stroke="#F59E0B" strokeWidth={1.5} dot={false} strokeDasharray="4 3" />
+                  <Line yAxisId="right" type="monotone" dataKey="arrivals" name="Arrivals" stroke="#10B981" strokeWidth={1.5} dot={false} strokeDasharray="4 3" />
                 </LineChart>
               </ResponsiveContainer>
 
@@ -254,7 +254,7 @@ export default function ReplayPage() {
                 >
                   <span
                     className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5"
-                    style={{ background: EVENT_COLORS[e.event_type] ?? '#475569' }}
+                    style={{ background: EVENT_COLORS[e.event_type] ?? '#64748B' }}
                   />
                   <div className="min-w-0">
                     <div className="text-[11px] font-semibold text-text-primary">

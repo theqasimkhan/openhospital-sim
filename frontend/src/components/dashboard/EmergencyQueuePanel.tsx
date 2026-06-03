@@ -82,7 +82,7 @@ export function EmergencyQueuePanel({ timeSeries, emergencyQueueLength }: Props)
               key={i}
               className="flex-1 rounded-sm"
               style={{
-                background: i < 3 ? '#10b981' : i < 7 ? '#f59e0b' : i < 12 ? '#f97316' : '#ef4444',
+                background: i < 3 ? '#10B981' : i < 7 ? '#F59E0B' : i < 12 ? '#f97316' : '#EF4444',
                 height: `${60 + i * 3}%`,
               }}
             />
@@ -95,12 +95,12 @@ export function EmergencyQueuePanel({ timeSeries, emergencyQueueLength }: Props)
 
       <ResponsiveContainer width="100%" height={160}>
         <BarChart data={data} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1e2d4a" />
-          <XAxis dataKey="step" tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} />
-          <YAxis tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#CBD5E1" />
+          <XAxis dataKey="step" tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} />
+          <YAxis tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} />
           <Tooltip content={<CustomTooltip />} />
-          <Bar dataKey="arrivals" name="Arrivals" fill="#0080ff" opacity={0.7} radius={[2, 2, 0, 0]} />
-          <Bar dataKey="queue" name="Queue" fill="#f59e0b" opacity={0.8} radius={[2, 2, 0, 0]} />
+          <Bar dataKey="arrivals" name="Arrivals" fill="#2563EB" opacity={0.7} radius={[2, 2, 0, 0]} />
+          <Bar dataKey="queue" name="Queue" fill="#F59E0B" opacity={0.8} radius={[2, 2, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </Panel>

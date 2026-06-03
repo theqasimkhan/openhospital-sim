@@ -70,45 +70,45 @@ export function ICUOccupancyChart({ timeSeries, icuTotal }: Props) {
         <AreaChart data={data} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
           <defs>
             <linearGradient id="icuGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#00d4ff" stopOpacity={0.3} />
-              <stop offset="95%" stopColor="#00d4ff" stopOpacity={0} />
+              <stop offset="5%" stopColor="#06B6D4" stopOpacity={0.3} />
+              <stop offset="95%" stopColor="#06B6D4" stopOpacity={0} />
             </linearGradient>
             <linearGradient id="wardGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#0080ff" stopOpacity={0.25} />
-              <stop offset="95%" stopColor="#0080ff" stopOpacity={0} />
+              <stop offset="5%" stopColor="#2563EB" stopOpacity={0.25} />
+              <stop offset="95%" stopColor="#2563EB" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1e2d4a" />
-          <XAxis dataKey="step" tick={{ fill: '#475569', fontSize: 11 }} tickLine={false} axisLine={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#CBD5E1" />
+          <XAxis dataKey="step" tick={{ fill: '#64748B', fontSize: 11 }} tickLine={false} axisLine={false} />
           <YAxis
             tickFormatter={(v) => `${(v * 100).toFixed(0)}%`}
-            tick={{ fill: '#475569', fontSize: 11 }}
+            tick={{ fill: '#64748B', fontSize: 11 }}
             tickLine={false}
             axisLine={false}
             domain={[0, 1]}
           />
           <Tooltip content={<CustomTooltip />} />
-          <ReferenceLine y={0.9} stroke="#ef4444" strokeDasharray="4 4" strokeWidth={1} label={{ value: '90%', fill: '#ef4444', fontSize: 10, position: 'insideTopRight' }} />
-          <ReferenceLine y={0.75} stroke="#f59e0b" strokeDasharray="4 4" strokeWidth={1} label={{ value: '75%', fill: '#f59e0b', fontSize: 10, position: 'insideTopRight' }} />
+          <ReferenceLine y={0.9} stroke="#EF4444" strokeDasharray="4 4" strokeWidth={1} label={{ value: '90%', fill: '#EF4444', fontSize: 10, position: 'insideTopRight' }} />
+          <ReferenceLine y={0.75} stroke="#F59E0B" strokeDasharray="4 4" strokeWidth={1} label={{ value: '75%', fill: '#F59E0B', fontSize: 10, position: 'insideTopRight' }} />
           <Area
             type="monotone"
             dataKey="ward_util"
             name="Ward"
-            stroke="#0080ff"
+            stroke="#2563EB"
             strokeWidth={2}
             fill="url(#wardGrad)"
             dot={false}
-            activeDot={{ r: 4, fill: '#0080ff' }}
+            activeDot={{ r: 4, fill: '#2563EB' }}
           />
           <Area
             type="monotone"
             dataKey="icu_util"
             name="ICU"
-            stroke="#00d4ff"
+            stroke="#06B6D4"
             strokeWidth={2}
             fill="url(#icuGrad)"
             dot={false}
-            activeDot={{ r: 4, fill: '#00d4ff' }}
+            activeDot={{ r: 4, fill: '#06B6D4' }}
           />
         </AreaChart>
       </ResponsiveContainer>
