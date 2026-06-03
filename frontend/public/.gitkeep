@@ -1,0 +1,2 @@
+# This file ensures the public/ directory is tracked by git.
+# Next.js and the production Dockerfile require this directory to exist.
