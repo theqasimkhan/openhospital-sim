@@ -14,7 +14,6 @@ import simpy
 
 from app.simulation.config import SimulationConfig
 
-
 # ── Resource snapshot (for serialisation) ─────────────────────────────────────
 
 @dataclass(frozen=True)

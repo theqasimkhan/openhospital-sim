@@ -36,7 +36,6 @@ import numpy as np
 from app.forecasting.base import TimeSeries
 from app.simulation.state import StateSnapshot
 
-
 RiskLevel = Literal["low", "medium", "high", "critical"]
 
 

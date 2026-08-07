@@ -6,10 +6,9 @@ from __future__ import annotations
 import pytest
 from httpx import AsyncClient
 
+from app.agents.registry import AgentRegistry
 from app.simulation.config import SimulationConfig
 from app.simulation.engine import HospitalSimEngine
-from app.agents.registry import AgentRegistry
-
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # Helpers

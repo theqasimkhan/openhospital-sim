@@ -34,7 +34,7 @@ _result_lock: asyncio.Lock = asyncio.Lock()
 
 _OPTIMIZERS: dict[
     str,
-    type[GreedyOptimizer] | type[GeneticOptimizer] | type[ParticleSwarmOptimizer],
+    type[GreedyOptimizer | GeneticOptimizer | ParticleSwarmOptimizer],
 ] = {
     "greedy":  GreedyOptimizer,
     "genetic": GeneticOptimizer,

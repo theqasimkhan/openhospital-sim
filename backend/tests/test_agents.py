@@ -14,7 +14,6 @@ from app.agents.registry import AgentRegistry
 from app.simulation.config import SimulationConfig
 from app.simulation.engine import HospitalSimEngine
 
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # Registry unit tests
 # ═══════════════════════════════════════════════════════════════════════════════

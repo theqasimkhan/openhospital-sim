@@ -89,9 +89,7 @@ class PatientAgent(BaseAgent):
                 self.admitted += 1
 
         elif et == SimEventType.ICU_TRANSFER:
-            if event.metadata.get("reason") == "direct_admission":
-                self.admitted = max(0, self.admitted - 1)
-            elif event.metadata.get("reason") == "deterioration":
+            if event.metadata.get("reason") == "direct_admission" or event.metadata.get("reason") == "deterioration":
                 self.admitted = max(0, self.admitted - 1)
             self.in_icu += 1
             decisions.extend(self._check_icu_spike(t, snapshot, event))

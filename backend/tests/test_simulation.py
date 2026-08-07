@@ -13,7 +13,6 @@ from app.simulation.config import SimulationConfig
 from app.simulation.engine import EngineStatus, HospitalSimEngine
 from app.simulation.events import SimEventType
 
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # Engine unit tests
 # ═══════════════════════════════════════════════════════════════════════════════

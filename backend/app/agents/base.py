@@ -23,7 +23,6 @@ from typing import Any
 from app.simulation.events import SimEvent
 from app.simulation.state import StateSnapshot
 
-
 # ── Enumerations ───────────────────────────────────────────────────────────────
 
 class AgentType(str, Enum):

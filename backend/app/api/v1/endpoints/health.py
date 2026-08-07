@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, status
 from sqlalchemy import text
@@ -72,6 +72,6 @@ async def health_check(
         app=settings.APP_NAME,
         version=settings.APP_VERSION,
         environment=settings.APP_ENV,
-        timestamp=datetime.utcnow(),
+        timestamp=datetime.now(timezone.utc),
         services=services,
     )

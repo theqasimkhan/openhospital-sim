@@ -11,7 +11,6 @@ import numpy as np
 from app.simulation.config import SimulationConfig
 from app.simulation.state import TriageLevel
 
-
 # ── Triage policy ──────────────────────────────────────────────────────────────
 
 class TriagePolicy:

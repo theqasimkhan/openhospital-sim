@@ -20,7 +20,6 @@ from typing import Any
 
 from app.simulation.config import SimulationConfig
 
-
 # ── Domain enumerations ────────────────────────────────────────────────────────
 
 class TriageLevel(str, Enum):

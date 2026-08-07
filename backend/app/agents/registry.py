@@ -14,8 +14,8 @@ from __future__ import annotations
 import asyncio
 from typing import Any
 
-from app.agents.base import BaseAgent, DecisionLog
 from app.agents.admin_agent import AdminAgent
+from app.agents.base import BaseAgent, DecisionLog
 from app.agents.doctor_agent import DoctorAgent
 from app.agents.emergency_coordinator_agent import EmergencyCoordinatorAgent
 from app.agents.forecasting_agent import ForecastingAgent

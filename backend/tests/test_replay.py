@@ -13,7 +13,6 @@ from httpx import AsyncClient
 
 from app.replay.store import ReplayStore, RunStatus
 
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # ReplayStore unit tests
 # ═══════════════════════════════════════════════════════════════════════════════

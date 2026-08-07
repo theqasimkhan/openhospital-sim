@@ -33,7 +33,6 @@ from typing import Any
 
 import numpy as np
 
-
 TimeSeries = list[dict[str, Any]]   # raw output from ForecastingAgent
 
 

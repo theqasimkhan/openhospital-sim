@@ -23,7 +23,6 @@ from abc import ABC, abstractmethod
 from app.optimization.base import ObjectiveScore, Solution
 from app.simulation.state import StateSnapshot
 
-
 # ── Abstract objective ─────────────────────────────────────────────────────────
 
 class ObjectiveFunction(ABC):

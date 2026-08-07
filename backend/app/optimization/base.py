@@ -29,7 +29,6 @@ import numpy as np
 
 from app.simulation.state import StateSnapshot
 
-
 # ── Decision variable ──────────────────────────────────────────────────────────
 
 @dataclass

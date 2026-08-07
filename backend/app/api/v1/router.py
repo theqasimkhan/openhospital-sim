@@ -1,12 +1,14 @@
 from fastapi import APIRouter
 
-from app.api.v1.endpoints import agents
-from app.api.v1.endpoints import forecasting
-from app.api.v1.endpoints import health
-from app.api.v1.endpoints import metrics
-from app.api.v1.endpoints import optimization
-from app.api.v1.endpoints import replay
-from app.api.v1.endpoints import simulation
+from app.api.v1.endpoints import (
+    agents,
+    forecasting,
+    health,
+    metrics,
+    optimization,
+    replay,
+    simulation,
+)
 
 api_router = APIRouter()
 

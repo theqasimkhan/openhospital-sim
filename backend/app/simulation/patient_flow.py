@@ -16,8 +16,8 @@ All significant transitions are recorded in EventLog.
 """
 from __future__ import annotations
 
-import simpy
 import numpy as np
+import simpy
 
 from app.simulation.config import SimulationConfig
 from app.simulation.events import EventLog, SimEventType
@@ -34,7 +34,6 @@ from app.simulation.state import (
     PatientStatus,
     TriageLevel,
 )
-
 
 # ── Patient journey ────────────────────────────────────────────────────────────
 

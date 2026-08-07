@@ -18,7 +18,7 @@ from app.observability.metrics import generate_metrics_response
 from app.replay.store import get_replay_store
 
 try:
-    from app.observability.metrics import REPLAY_RUNS_STORED, PROMETHEUS_AVAILABLE
+    from app.observability.metrics import PROMETHEUS_AVAILABLE, REPLAY_RUNS_STORED
 except ImportError:
     PROMETHEUS_AVAILABLE = False
 

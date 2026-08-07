@@ -23,7 +23,6 @@ from typing import Any
 
 from app.forecasting.base import BaseForecaster, ForecastResult, TimeSeries
 
-
 # ── Staffing recommendation ────────────────────────────────────────────────────
 
 @dataclass

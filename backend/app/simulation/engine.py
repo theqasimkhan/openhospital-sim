@@ -25,7 +25,7 @@ from typing import Any
 import numpy as np
 import simpy
 
-from app.simulation.config import SimulationConfig, DEFAULT_CONFIG
+from app.simulation.config import DEFAULT_CONFIG, SimulationConfig
 from app.simulation.events import EventLog, SimEventType
 from app.simulation.patient_flow import (
     emergency_spike_process,
@@ -34,7 +34,6 @@ from app.simulation.patient_flow import (
 )
 from app.simulation.resources import HospitalResources
 from app.simulation.state import HospitalStateManager, StateSnapshot
-
 
 # ── Engine status ──────────────────────────────────────────────────────────────
 

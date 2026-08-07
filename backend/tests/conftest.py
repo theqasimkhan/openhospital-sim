@@ -19,7 +19,6 @@ from app.db.redis import get_redis
 from app.db.session import get_db
 from app.main import app
 
-
 # ── Mock database session ─────────────────────────────────────────────────────
 
 @pytest.fixture()
