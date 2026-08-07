@@ -20,7 +20,7 @@ async def take_screenshots():
         page = await context.new_page()
         
         for route, filename in pages:
-            url = f"http://localhost:3000{route}"
+            url = f"http://localhost:3001{route}"
             print(f"Navigating to {url}...")
             try:
                 await page.goto(url)

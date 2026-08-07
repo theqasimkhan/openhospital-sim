@@ -22,16 +22,21 @@ export default function DashboardPage() {
 
   const refresh = useCallback(async () => {
     setLoading(true)
-    const [snap, ts, dec] = await Promise.all([
-      fetchSimulationState(),
-      fetchForecastTimeSeries(),
-      fetchRecentDecisions({ limit: 8 }),
-    ])
-    setSnapshot(snap)
-    setTimeSeries(ts)
-    setDecisions(dec)
-    setLastRefresh(new Date())
-    setLoading(false)
+    try {
+      const [snap, ts, dec] = await Promise.all([
+        fetchSimulationState(),
+        fetchForecastTimeSeries(),
+        fetchRecentDecisions({ limit: 8 }),
+      ])
+      if (snap) setSnapshot(snap)
+      if (Array.isArray(ts) && ts.length > 0) setTimeSeries(ts)
+      if (Array.isArray(dec)) setDecisions(dec)
+      setLastRefresh(new Date())
+    } catch {
+      // individual fetches already handle errors with mock fallbacks
+    } finally {
+      setLoading(false)
+    }
   }, [])
 
   useEffect(() => {

@@ -121,7 +121,8 @@ export async function fetchSimulationEvents(params?: {
 export async function fetchAgents(): Promise<AgentState[]> {
   try {
     const result = await apiFetch<{ agents: AgentState[] } | AgentState[]>('/api/v1/agents')
-    return Array.isArray(result) ? result : result.agents
+    const agents = Array.isArray(result) ? result : result.agents
+    return Array.isArray(agents) ? agents : MOCK_AGENTS
   } catch {
     return MOCK_AGENTS
   }
@@ -165,7 +166,7 @@ export async function fetchForecastTimeSeries(): Promise<TimeSeriesPoint[]> {
     const result = await apiFetch<{ time_series: TimeSeriesPoint[] } | TimeSeriesPoint[]>(
       '/api/v1/agents/forecast/timeseries'
     )
-    const series = Array.isArray(result) ? result : result.time_series
+    const series = Array.isArray(result) ? result : (result as { time_series: TimeSeriesPoint[] })?.time_series
     return Array.isArray(series) && series.length > 0 ? series : MOCK_TIME_SERIES
   } catch {
     return MOCK_TIME_SERIES
